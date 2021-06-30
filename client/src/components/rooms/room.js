@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import Tabs from './Tabs';
+import Tab from './Tab';
 import PropTypes from 'prop-types';
 import { getCurrentRoomData } from '../../actions/roomAction';
 
@@ -8,17 +10,6 @@ const Room = ({ getCurrentRoomData, auth, room }) => {
     getCurrentRoomData();
   }, []);
 
-  console.log('room; outside useEffect', room);
-  console.log('room; outside useEffect', room && room.day_name);
-  console.log(
-    'room; <==========>',
-    room && room.menu.map((m) => console.log(m))
-  );
-
-  //   console.log('menu_name; outside useEffect', room.menu_name);
-  //   console.log('menu; outside useEffect', room.menu);
-  // room.menu.length > 0 &&
-  //
   return (
     <div>
       {room && room !== null && room.menu !== null && room.menu.length > 0 && (
@@ -27,45 +18,92 @@ const Room = ({ getCurrentRoomData, auth, room }) => {
           <img src={room.info.logo_url} />
         </li>
       )}
-
-      {room &&
-        room !== null &&
-        room.menu !== null &&
-        room.menu.length > 0 &&
-        room.menu.map((room) => (
-          <div>
-            <h1>{room.open_for_order.toString()}</h1>
-            <h1>{room.menu_name}</h1>
+      <Tabs>
+        {room &&
+          room !== null &&
+          room.menu !== null &&
+          room.menu.length > 0 &&
+          room.menu.map((room) => (
             <div>
-              {room.menu_sections &&
-                room.menu_sections.map((sec) => (
-                  <div>
-                    {sec.section_name.toString()}
-                    {sec.menu_categories.map((cat) => (
-                      <h1>
-                        {cat.name}
-                        <ul>
-                          {cat.items.map((item) => (
-                            <ul>
-                              <li>{item.name}</li>
-                              <li>
-                                <img src={item.image} />
-                              </li>
-                              <li>
-                                <img src={item.price} />
-                              </li>
+              <h1
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  margin: 'auto',
 
-                              <li>{item.comment_code}</li>
+                }}
+              >
+                {room.menu_name}
+              </h1>
+
+              <div>
+                {room.menu_sections &&
+                  room.menu_sections.map((sec) => (
+                    <div>
+                      {/* {sec.section_name.toString()} */}
+                      <Tab value='banana' header={sec.section_name.toString()}>
+                        {sec.menu_categories.map((cat) => (
+                          <h1>
+                            {cat.name}
+                            <ul>
+                              {cat.items.map((item) => (
+                                <div>
+                                  <ul>
+                                    <li>{item.name}</li>
+                                    <li>
+                                      <div style={{}}>
+                                        {item.image ? (
+                                          <img
+                                            style={{ width: 150, height: 150 }}
+                                            src={item.image}
+                                          />
+                                        ) : (
+                                          <img
+                                            style={{ width: 150, height: 150 }}
+                                            src='https://dxp-hospitality-dev-rg-sit-467300-cd2.azurewebsites.net//-/mediadh/dh/hospitality/e-menu/menus/alnpool/96178.jpg'
+                                          />
+                                        )}
+                                        <li>{item.price}</li>
+                                      </div>
+                                    </li>
+                                  </ul>
+
+                                  <div class='d-flex justify-content-between align-items-center mt-3 p-2 items rounded'>
+                                    <div class='d-flex flex-row align-items-center'>
+                                      <a
+                                        class='action-btns add'
+                                        title='Add number of items'
+                                      >
+                                        +
+                                      </a>
+                                      <span class='d-block'>{item.name}</span>
+                                      <a
+                                        class='action-btns minus'
+                                        title='remove number of items'
+                                      >
+                                        -
+                                      </a>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
                             </ul>
-                          ))}
-                        </ul>
-                      </h1>
-                    ))}
-                  </div>
-                ))}
+                          </h1>
+                        ))}
+                      </Tab>
+                    </div>
+                  ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        <Tab value='apple' header='All Days'>
+          All Days
+        </Tab>
+        <Tab value='apple' header='Drinks'>
+          Drinks
+        </Tab>
+      </Tabs>
     </div>
   );
 };
