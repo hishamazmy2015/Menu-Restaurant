@@ -31,7 +31,6 @@ const Room = ({ getCurrentRoomData, auth, room }) => {
                   top: '50%',
                   left: '50%',
                   margin: 'auto',
-
                 }}
               >
                 {room.menu_name}
@@ -42,49 +41,51 @@ const Room = ({ getCurrentRoomData, auth, room }) => {
                   room.menu_sections.map((sec) => (
                     <div>
                       {/* {sec.section_name.toString()} */}
-                      <Tab value='banana' header={sec.section_name.toString()}>
+                      <Tab
+                        key={sec.id}
+                        value='banana'
+                        header={sec.section_name.toString()}
+                      >
                         {sec.menu_categories.map((cat) => (
                           <h1>
                             {cat.name}
                             <ul>
                               {cat.items.map((item) => (
-                                <div>
-                                  <ul>
-                                    <li>{item.name}</li>
-                                    <li>
-                                      <div style={{}}>
-                                        {item.image ? (
-                                          <img
-                                            style={{ width: 150, height: 150 }}
-                                            src={item.image}
-                                          />
-                                        ) : (
-                                          <img
-                                            style={{ width: 150, height: 150 }}
-                                            src='https://dxp-hospitality-dev-rg-sit-467300-cd2.azurewebsites.net//-/mediadh/dh/hospitality/e-menu/menus/alnpool/96178.jpg'
-                                          />
-                                        )}
-                                        <li>{item.price}</li>
-                                      </div>
-                                    </li>
-                                  </ul>
-
-                                  <div class='d-flex justify-content-between align-items-center mt-3 p-2 items rounded'>
-                                    <div class='d-flex flex-row align-items-center'>
-                                      <a
-                                        class='action-btns add'
-                                        title='Add number of items'
-                                      >
-                                        +
-                                      </a>
-                                      <span class='d-block'>{item.name}</span>
-                                      <a
-                                        class='action-btns minus'
-                                        title='remove number of items'
-                                      >
-                                        -
-                                      </a>
-                                    </div>
+                                <div class='d-flex justify-content-between align-items-center mt-3 p-2 items rounded'>
+                                  <div class='d-flex flex-row align-items-center'>
+                                    {/* <ul class='columns' data-columns='2'> */}
+                                      <li style={{ alignSelf: 'flex-end' }}>
+                                        {item.name}
+                                      </li>
+                                      <li>
+                                        <ul class='columns' data-columns='2'>
+                                          {/* <li> */}
+                                            {item.image ? (
+                                              <img
+                                                style={{
+                                                  width: 150,
+                                                  height: 150,
+                                                }}
+                                                src={item.image}
+                                              />
+                                            ) : (
+                                              <img
+                                                style={{
+                                                  width: 150,
+                                                  height: 150,
+                                                }}
+                                                src='https://dxp-hospitality-dev-rg-sit-467300-cd2.azurewebsites.net//-/mediadh/dh/hospitality/e-menu/menus/alnpool/96178.jpg'
+                                              />
+                                            )}
+                                              {item.price}
+                                          {/* </li> */}
+                                          {/* <li style={{ float: 'right' }}>
+                                            {item.price}
+                                          </li> */}
+                                        </ul>
+                                      </li>
+                                    {/* </ul> */}
+                                    {/* <span class='d-block'>{item.price}</span> */}
                                   </div>
                                 </div>
                               ))}
