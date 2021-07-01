@@ -5,7 +5,6 @@ import { Link, Redirect } from 'react-router-dom';
 import { AddingAlert } from '../../actions/AlertAction3';
 import { login } from '../../actions/auth';
 
-
 function Login({ isAuthen, login }) {
   const [formDate, setFormDate] = useState({
     email: '',
@@ -33,8 +32,8 @@ function Login({ isAuthen, login }) {
       AddingAlert('Login is False', 'danger');
     }
   };
-  if (isAuthen) return <Redirect to='/dashboard' />;
-  
+  if (isAuthen) return <Redirect to='/room' />;
+
   return (
     <Fragment>
       <h1 className='large text-primary'>Sign In</h1>
@@ -44,15 +43,16 @@ function Login({ isAuthen, login }) {
       <form
         className='form'
         action='create-profile.html'
-        onSubmit={(e) => onSubmit(e)}>
-
+        onSubmit={(e) => onSubmit(e)}
+      >
         <div className='form-group'>
           <input
             type='email'
             placeholder='Email Address'
             value={email}
             onChange={(e) => onChange(e)}
-            name='email'/>
+            name='email'
+          />
         </div>
         <div className='form-group'>
           <input
@@ -75,7 +75,7 @@ function Login({ isAuthen, login }) {
 Login.prototype = {
   login: PropTypes.func.isRequired,
   AddingAlert: PropTypes.func.isRequired,
-  isAuthen: PropTypes.bool  ,
+  isAuthen: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({

@@ -31,7 +31,7 @@ const App = () => {
           <section className='container'>
             <Alert3 />
             <Switch>
-              <Route exact path='/room' component={Room} />
+              <PrivateRoute exact path='/room' component={Room} />
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={login} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
