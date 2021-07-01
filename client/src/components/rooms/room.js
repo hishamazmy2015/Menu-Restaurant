@@ -7,6 +7,9 @@ import { getCurrentRoomData } from '../../actions/roomAction';
 import Image from 'react-bootstrap/Image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReactDOM from 'react-dom';
+// import Panel from 'react-bootstrap';
+// import Panel from 'reactstrap';
+
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -136,7 +139,11 @@ const Room = ({ getCurrentRoomData, auth, room }) => {
                                               {item.name}
                                             </p>
                                           </li>
-                                          <li>{item.price}</li>
+                                          <li>
+                                            <span value='AED'>
+                                            AED {item.price}
+                                            </span>
+                                          </li>
                                           <li>{item.description}</li>
                                         </span>
                                       </ul>
