@@ -19,9 +19,6 @@ const Room = ({ getCurrentRoomData, auth, room }) => {
   return (
     <div>
       <div className='col-6'></div>
-      <div>
-        Your <FontAwesomeIcon icon='coffee' /> is hot and ready!
-      </div>
 
       {room && room !== null && room.menu !== null && room.menu.length > 0 && (
         <div style={{ margin: '3%', position: 'relative' }}>
