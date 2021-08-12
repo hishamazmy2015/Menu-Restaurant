@@ -7,8 +7,11 @@ export const Header = (props) => {
   return (
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
 
-        <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        {/* <Container> */}
+          <Navbar.Brand href="/home"> 
+        
+          <i class="fas fa-blog">ASIA</i>
+           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -17,9 +20,7 @@ export const Header = (props) => {
                   </Nav.Link>
               <Nav.Link href="/login">
               <i className="fas fa-user"> Login</i>
-                  
                   </Nav.Link>
-
               {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
@@ -36,7 +37,7 @@ export const Header = (props) => {
 
             </Nav>
           </Navbar.Collapse>
-        </Container>
+        {/* </Container> */}
       </Navbar>
   );
 };

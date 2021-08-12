@@ -6,7 +6,13 @@ function Footer() {
     <div>
       <footer>
         <Container>
+          <br />
+          <br />
+          <br />
+          <br />
           <Row>
+            <br />
+
             <Col className="text-center py-3">CopyRight &copy; H2Company </Col>
           </Row>
         </Container>
