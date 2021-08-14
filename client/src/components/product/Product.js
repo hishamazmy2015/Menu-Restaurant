@@ -1,6 +1,7 @@
 import React from "react";
-import { Row, Col, Card, Img, Title, Button, Body } from "react-bootstrap";
+import { Row, Col, Card, Img, Title, Button, Body ,Image} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import Rating from '../../screens/Rating'
 function product({ product }) {
   return (
     <div>
@@ -8,7 +9,9 @@ function product({ product }) {
         {/* <Card style={{ width: "18rem" }} className="my-2 p-3" rounded> */}
 
         <Link to={`/product/${product._id}`}>
-          <Card.Img variant="top" src={product.image} />
+          {/* <Card.Img variant="top" src={product.image} /> */}
+          <Image  variant="top" src={product.image} alt={product.name} />
+
         </Link>
 
         <Card.Body>
@@ -21,8 +24,9 @@ function product({ product }) {
           </Link>
 
           <Card.Text as="div">
-            <div className="my-2 p-3">
-              {product.rating} from {product.numReviews}
+            <div className="my-3">
+             <Rating value={product.rating}  text={`${product.numReviews}  reviews`} color={"#f8e825"} />
+             
             </div>
           </Card.Text>
 

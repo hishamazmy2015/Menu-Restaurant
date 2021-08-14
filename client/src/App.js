@@ -19,6 +19,7 @@ import { Header } from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import HomePage from "./screens/HomePage";
 import ProductScreen from "./screens/ProductScreen";
+import CartScreen from "./screens/CartScreen";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -47,6 +48,7 @@ const App = () => {
             <Container>
               <Route exact path="/home" component={HomePage} />
               <Route exact path="/product/:id" component={ProductScreen} />
+              <Route exact path="/cart/:id?" component={CartScreen} />
             </Container>
           </main>
           <Footer />
